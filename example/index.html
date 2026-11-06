@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>springy-track — пример</title>
+<link rel="stylesheet" href="../springy-track.css">
+<style>
+    body { margin: 0; font: 16px/1.4 system-ui, sans-serif; color: #1d1d1f; background: #fafafa; }
+    section { overflow-x: clip; padding: 48px 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    h1 { margin: 0; font-size: 24px; }
+    .arrows { display: flex; gap: 8px; }
+    .arrows button { width: 44px; height: 44px; border: 1px solid #ccc; background: #fff; font-size: 20px; cursor: pointer; }
+    .arrows button.is-disabled { opacity: .35; pointer-events: none; }
+    .card { width: 260px; height: 320px; display: flex; align-items: flex-end; padding: 16px; box-sizing: border-box;
+        color: #fff; text-decoration: none; font-weight: 600; font-size: 20px; }
+    @media (max-width: 600px) { .card { width: 72vw; } }
+</style>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="head">
+            <h1>Лента карточек</h1>
+            <div class="arrows">
+                <button type="button" class="js-prev" aria-label="Назад">&larr;</button>
+                <button type="button" class="js-next" aria-label="Вперёд">&rarr;</button>
+            </div>
+        </div>
+        <div class="js-track"></div>
+    </div>
+</section>
+<script src="../springy-track.js"></script>
+<script>
+    var track = document.querySelector('.js-track');
+    for (var i = 1; i <= 12; i++) {
+        var a = document.createElement('a');
+        a.href = '#card-' + i;
+        a.className = 'card';
+        a.style.background = 'hsl(' + (i * 29) + ' 55% 52%)';
+        a.textContent = 'Карточка ' + i;
+        track.appendChild(a);
+    }
+    SpringyTrack(track, {
+        prev: document.querySelector('.js-prev'),
+        next: document.querySelector('.js-next')
+    });
+</script>
+</body>
+</html>

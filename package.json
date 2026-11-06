@@ -1,0 +1,12 @@
+{
+  "name": "springy-track",
+  "version": "1.0.0",
+  "description": "Horizontal card track on native scroll: mouse drag with inertia, spring at the edges, edge-to-edge fade, arrows. No dependencies.",
+  "main": "springy-track.js",
+  "style": "springy-track.css",
+  "files": ["springy-track.js", "springy-track.css"],
+  "keywords": ["slider", "carousel", "scroll-snap", "drag", "inertia", "spring"],
+  "repository": { "type": "git", "url": "https://github.com/IvanMayorov/springy-track.git" },
+  "author": "Ivan Mayorov",
+  "license": "MIT"
+}
