@@ -2,6 +2,8 @@
 
 Лента карточек на нативной прокрутке браузера: мышью тянется с инерцией, за краем пружинит, тянется до краёв окна с затуханием, листается стрелками. Без зависимостей, ~5 КБ.
 
+Демо: https://ivanmayorov.github.io/springy-track/
+
 *A horizontal card track on native browser scroll: mouse drag with inertia, a spring at the edges, edge-to-edge fade, arrow buttons. No dependencies.*
 
 ## Что умеет
