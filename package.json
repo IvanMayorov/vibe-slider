@@ -1,12 +1,12 @@
 {
-  "name": "springy-track",
+  "name": "vibe-slider",
   "version": "1.0.0",
   "description": "Horizontal card track on native scroll: mouse drag with inertia, spring at the edges, edge-to-edge fade, arrows. No dependencies.",
-  "main": "springy-track.js",
-  "style": "springy-track.css",
-  "files": ["springy-track.js", "springy-track.css"],
+  "main": "vibe-slider.js",
+  "style": "vibe-slider.css",
+  "files": ["vibe-slider.js", "vibe-slider.css"],
   "keywords": ["slider", "carousel", "scroll-snap", "drag", "inertia", "spring"],
-  "repository": { "type": "git", "url": "https://github.com/IvanMayorov/springy-track.git" },
+  "repository": { "type": "git", "url": "https://github.com/IvanMayorov/vibe-slider.git" },
   "author": "Ivan Mayorov",
   "license": "MIT"
 }

@@ -1,0 +1,27 @@
+/*! Vibe Slider — MIT License. https://github.com/IvanMayorov/vibe-slider */
+
+/* Base track: native horizontal scroll with snapping, no scrollbar. Your own track styles can replace this block. */
+.vibe-slider {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+}
+.vibe-slider::-webkit-scrollbar { display: none; }
+.vibe-slider > * { flex: 0 0 auto; scroll-snap-align: start; }
+
+/* The script sets paddings up to the window edges (--vibe-g left, --vibe-gr right):
+   outside the container line the cards fade out towards the window edge. */
+.vibe-slider {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--vibe-g, 0px), #000 calc(100% - var(--vibe-gr, 0px)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 var(--vibe-g, 0px), #000 calc(100% - var(--vibe-gr, 0px)), transparent 100%);
+    /* The track itself is shifted, not the cards: shifting cards changes scrollWidth and the browser jerks the track */
+    transform: translateX(var(--vibe-pull, 0px));
+}
+@media (hover: hover) and (pointer: fine) {
+    .vibe-slider { cursor: grab; }
+}
+.vibe-slider.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.vibe-slider.is-dragging a { cursor: grabbing; }

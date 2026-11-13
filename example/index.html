@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>springy-track — пример</title>
-<link rel="stylesheet" href="../springy-track.css">
+<title>Vibe Slider — пример</title>
+<link rel="stylesheet" href="../vibe-slider.css">
 <style>
     body { margin: 0; font: 16px/1.4 system-ui, sans-serif; color: #1d1d1f; background: #fafafa; }
     section { overflow-x: clip; padding: 48px 0; }
@@ -32,7 +32,7 @@
         <div class="js-track"></div>
     </div>
 </section>
-<script src="../springy-track.js"></script>
+<script src="../vibe-slider.js"></script>
 <script>
     var track = document.querySelector('.js-track');
     for (var i = 1; i <= 12; i++) {
@@ -43,7 +43,7 @@
         a.textContent = 'Карточка ' + i;
         track.appendChild(a);
     }
-    SpringyTrack(track, {
+    VibeSlider(track, {
         prev: document.querySelector('.js-prev'),
         next: document.querySelector('.js-next')
     });

@@ -1,8 +1,8 @@
-# springy-track
+# Vibe Slider
 
 Лента карточек на нативной прокрутке браузера: мышью тянется с инерцией, за краем пружинит, тянется до краёв окна с затуханием, листается стрелками. Без зависимостей, ~5 КБ.
 
-Демо: https://ivanmayorov.github.io/springy-track/
+Демо: https://ivanmayorov.github.io/vibe-slider/
 
 *A horizontal card track on native browser scroll: mouse drag with inertia, a spring at the edges, edge-to-edge fade, arrow buttons. No dependencies.*
 
@@ -20,11 +20,11 @@
 ## Подключение
 
 ```html
-<link rel="stylesheet" href="springy-track.css">
-<script src="springy-track.js"></script>
+<link rel="stylesheet" href="vibe-slider.css">
+<script src="vibe-slider.js"></script>
 ```
 
-Или через сборщик: `require('springy-track')` / `import SpringyTrack from 'springy-track'` (UMD).
+Или через сборщик: `require('vibe-slider')` / `import VibeSlider from 'vibe-slider'` (UMD).
 
 ## Разметка
 
@@ -43,7 +43,7 @@
 ```
 
 ```js
-SpringyTrack(document.querySelector('.js-track'), {
+VibeSlider(document.querySelector('.js-track'), {
   slides: '.card',                          // карточки; по умолчанию — дети ленты
   prev: document.querySelector('.js-prev'),
   next: document.querySelector('.js-next')
@@ -64,7 +64,7 @@ SpringyTrack(document.querySelector('.js-track'), {
 
 ## Методы
 
-`SpringyTrack()` возвращает объект (он же лежит в `track.springyTrack`):
+`VibeSlider()` возвращает объект (он же лежит в `track.vibeSlider`):
 
 - `go(1)` / `go(-1)` — пролистать вперёд или назад, как стрелкой;
 - `update()` — обновить состояние стрелок;
@@ -73,10 +73,10 @@ SpringyTrack(document.querySelector('.js-track'), {
 
 ## Стили
 
-`springy-track.css` задаёт базовую ленту (flex, `scroll-snap`, скрытая полоса прокрутки, промежуток 16px), маску затухания и курсор. Базовый блок можно заменить своими стилями. Скрипт ставит на ленту CSS-переменные:
+`vibe-slider.css` задаёт базовую ленту (flex, `scroll-snap`, скрытая полоса прокрутки, промежуток 16px), маску затухания и курсор. Базовый блок можно заменить своими стилями. Скрипт ставит на ленту CSS-переменные:
 
-- `--springy-g`, `--springy-gr` — поля от края окна до контейнера слева и справа;
-- `--springy-pull` — текущая оттяжка за край;
+- `--vibe-g`, `--vibe-gr` — поля от края окна до контейнера слева и справа;
+- `--vibe-pull` — текущая оттяжка за край;
 - класс `is-dragging` — пока ленту тянут или она докатывается (привязка к карточкам на это время выключена).
 
 ## Лицензия

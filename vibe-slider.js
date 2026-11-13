@@ -1,21 +1,21 @@
 /*!
- * springy-track — horizontal card track with mouse drag, inertia and a spring at the edges.
- * MIT License. https://github.com/IvanMayorov/springy-track
+ * Vibe Slider — horizontal card track with mouse drag, inertia and a spring at the edges.
+ * MIT License. https://github.com/IvanMayorov/vibe-slider
  *
- * SpringyTrack(track, { slides, prev, next }) — `track` is scrolled horizontally by the browser (scroll-snap in CSS);
+ * VibeSlider(track, { slides, prev, next }) — `track` is scrolled horizontally by the browser (scroll-snap in CSS);
  * `slides` — selector of the cards inside (track children by default); `prev` / `next` — arrow buttons
  * (they get the `is-disabled` class at the edges).
  *
  * What it adds:
- * - edge-to-edge track: paddings (--springy-g, --springy-gr) from the window edge to the container, the first card
- *   sits on the container line, cards outside the container fade out towards the window edge (mask in springy-track.css);
+ * - edge-to-edge track: paddings (--vibe-g, --vibe-gr) from the window edge to the container, the first card
+ *   sits on the container line, cards outside the container fade out towards the window edge (mask in vibe-slider.css);
  * - the track can be dragged with a mouse; released, it glides on with inertia and settles on a card; past the edge it springs;
  * - arrows scroll by as many cards as are visible, with the same smooth glide.
  * Fingers and touchpads scroll the track natively. The parent of the track needs `overflow-x: clip` (or hidden).
  */
 (function (root, factory) {
 	if (typeof module === 'object' && module.exports) module.exports = factory();
-	else root.SpringyTrack = factory();
+	else root.VibeSlider = factory();
 })(typeof self !== 'undefined' ? self : this, function () {
 	'use strict';
 
@@ -25,15 +25,15 @@
 	// SPRING is the stiffness: lower is smoother and longer (at 7 the motion settles in about 0.8 s).
 	var SPRING = 7;
 
-	function SpringyTrack(track, opts) {
+	function VibeSlider(track, opts) {
 		opts = opts || {};
-		if (!track || track.springyTrack) return track && track.springyTrack;
+		if (!track || track.vibeSlider) return track && track.vibeSlider;
 		var still = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 		var prev = opts.prev, next = opts.next;
 		var rubber = opts.rubber != null ? opts.rubber : RUBBER;
 		var throwK = opts.throw != null ? opts.throw : THROW;
 		var spring = opts.spring != null ? opts.spring : SPRING;
-		track.classList.add('springy-track');
+		track.classList.add('vibe-slider');
 
 		function slides() {
 			return opts.slides ? track.querySelectorAll(opts.slides) : track.children;
@@ -60,8 +60,8 @@
 			track.style.paddingRight = gr + 'px';
 			track.style.scrollPaddingLeft = g + 'px';
 			track.style.scrollPaddingRight = gr + 'px';
-			track.style.setProperty('--springy-g', g + 'px');
-			track.style.setProperty('--springy-gr', gr + 'px');
+			track.style.setProperty('--vibe-g', g + 'px');
+			track.style.setProperty('--vibe-gr', gr + 'px');
 			if (track.scrollLeft !== x) track.scrollLeft = x;
 			update();
 		}
@@ -73,7 +73,7 @@
 
 		var anim = 0, sc = null, pl = null; // sc — scroll {x, v, to}, pl — pull past the edge {x, v}
 		var pullNow = 0;
-		function pull(px) { pullNow = px; track.style.setProperty('--springy-pull', px + 'px'); }
+		function pull(px) { pullNow = px; track.style.setProperty('--vibe-pull', px + 'px'); }
 		function stopAnim() { cancelAnimationFrame(anim); anim = 0; sc = pl = null; }
 		// End of motion: turn snapping back on and set the same scroll again with snapping on, so the browser
 		// remembers this card. Otherwise it remembers the card it stood on before the drag (often the first one)
@@ -206,13 +206,13 @@
 			if (prev) prev.removeEventListener('click', onPrev);
 			if (next) next.removeEventListener('click', onNext);
 			['margin-left', 'margin-right', 'padding-left', 'padding-right', 'scroll-padding-left', 'scroll-padding-right',
-				'--springy-g', '--springy-gr', '--springy-pull'].forEach(function (p) { track.style.removeProperty(p); });
-			track.classList.remove('springy-track', 'is-dragging');
-			delete track.springyTrack;
+				'--vibe-g', '--vibe-gr', '--vibe-pull'].forEach(function (p) { track.style.removeProperty(p); });
+			track.classList.remove('vibe-slider', 'is-dragging');
+			delete track.vibeSlider;
 		}
 
-		return (track.springyTrack = { go: go, update: update, refresh: gutter, destroy: destroy });
+		return (track.vibeSlider = { go: go, update: update, refresh: gutter, destroy: destroy });
 	}
 
-	return SpringyTrack;
+	return VibeSlider;
 });
